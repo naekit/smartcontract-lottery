@@ -50,7 +50,7 @@ def get_contract(contract_name):
             deployed version of this contract.
             MockV3Aggregator[-1]
     """
-    contract_type = contract_to_mock(contract_name)
+    contract_type = contract_to_mock[contract_name]
     if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
         if len(contract_type) <= 0:
             # MockV3Aggregator.length we're checking if any are deployed
@@ -75,4 +75,6 @@ INITIAL_VALUE = 200000000000
 def deploy_mocks(decimals=DECIMALS, initial_value=INITIAL_VALUE):
     account = get_account()
     MockV3Aggregator.deploy(decimals, initial_value, {"from": account})
+    link_token = LinkToken.deploy({"from": account})
+    VRFCoordinatorMock.deploy(link_token.address, {"from": account})
     print("Deployed!")
