@@ -8,6 +8,9 @@ compiler:
     - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@3.4.0'
 networks:
   default: development
+  rinkeby:
+    vrf_coordinator: '0xb3dCcb4Cf7a26f6cf6B120Cf5A73875B7BBc655B'
+    eth_usd_price_feed: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e'
   mainnet-fork:
     eth_usd_price_feed: '0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419'
 wallets:
